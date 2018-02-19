@@ -1,0 +1,259 @@
+*{
+	box-sizing:border-box;
+	transition-duration: .3s;
+	animation: fadeIn .3s;
+}
+@keyframes fadeIn{
+	from{opacity: 0}
+	to{opacity: 1}
+}
+body{
+	width: 100vw;
+	overflow-x: hidden;
+	font-family:'Century Gothic';
+	margin:0;
+}
+.flexer{
+	display: flex;
+	flex-wrap: wrap;
+}
+.navigation-bar{
+	background-color:rgb(28,117,188);
+	position:relative;
+	color:white;
+	font-size:1.3em;
+}
+.cover{
+	width: 100%;
+	max-height: 40vh;
+	object-fit: cover;
+	background-color: rgb(0,0,0);
+	filter: grayscale(50%);
+}
+.course-info{
+	width: 60%;
+	padding: 1.5em;
+	font-size: 1.5em;
+}
+.course-videos{
+	width: 40%;
+	padding: 2em;
+	max-height: 60vh;
+	background-color: #ddf;
+	overflow-y: auto;
+}
+.course-videos img{
+	width: 100%;
+}
+.course-videos div{
+	padding: 1em;
+	cursor: pointer;
+}
+.navigation-bar div{
+	position: relative;
+	display: flex;
+	justify-content: flex-end;
+}
+.navigation-bar div a{
+	display: flex;
+	align-items: center;
+	margin-right: 1em;	
+	padding-right: 1em;	
+	padding-left: 1em;	
+	height: 10vh;
+}
+.navigation-bar div a:hover{
+	background-color: rgb(247,147,29);
+}
+a{
+	color:inherit;
+}
+h2{
+	width:80%;
+	margin-left: 10%;
+}
+iframe{
+	border:none;
+	width:100vw;
+	height:56.2vw;
+}
+.comments{
+	padding:3em;
+	padding-top:1em;
+	font-size:1.5em;
+}
+@media(max-width:599px){
+	.comments{
+		padding:1em;
+	}
+}
+.comments div:not(.loading),.comments input,.comments button{
+	padding:.5em;
+	margin-bottom:1em;
+	font-size:.8em;
+	box-shadow:5px 5px 10px silver;
+	animation:ffl 1s ease-in-out;
+}
+.comments input,.comments button{
+	display:block;
+	width:100%;
+}
+@keyframes ffl{
+	from{margin-left:-50vw;opacity:0}
+	to{margin-left:0;opacity:1}
+}
+#root{
+	height: 90vh;
+	position: relative;
+	overflow-y: auto;
+}
+#root > section{
+	background-color:white;
+	color:#333;
+	height: 100%;
+	width: 100%;
+}
+#login{
+	position:relative;
+	top: 50%;
+	left: 50%;
+	transform: translate( -50% , calc( -50% - 5vh )); 
+	display: inline-block;
+	border: 5px solid rgb(28,117,188);
+	padding: 2em;
+	font-size: 1.2em;
+}
+#login input{
+	font-size: 1.2em;
+	display: block;
+	width: 100%;
+	margin-bottom: 1.5em;
+	border: 3px solid #ddd;
+}
+#login input[type="submit"]{
+	background-color: #ddd;
+	cursor: pointer;
+}
+#login input:focus{
+	border: 3px solid rgb(247,147,29);
+}
+.gray{
+	font-weight: normal;
+	font-size: .8em;
+	color:gray;
+}
+.loading{
+	display:inline-block;
+	padding: 1em;
+	animation:load-dots 1s infinite;
+}
+.dashboard{
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
+}
+.dashboard footer{
+	width: 100%;
+	background-color: #333;
+	color:white;
+	padding: .7em;
+	font-size: 1.5em;
+}
+#back:hover{
+	opacity: 1;
+}
+#back{
+	z-index: 99999;
+	cursor: pointer;
+	position: absolute;
+	left: 0;
+	top: 0;
+	padding: .5em;
+	background-color: rgb(28,117,188);
+	color:#fff;
+	font-size: 1.3em;
+	opacity: .3;
+}
+.dashboard h1{
+	width: 100%;
+	text-align: center;
+}
+.light-link{
+	color: rgb(28,117,188);
+	margin-left: .5em;
+	cursor: pointer;
+	text-decoration: none;
+}
+.light-link:hover{
+	text-decoration: underline;
+}
+.course-prop:hover{
+	text-decoration: underline;
+}
+.course-prop{
+	cursor: pointer;
+	width: 30%;
+	overflow: hidden;
+	margin-bottom: 1em;
+	padding: 1em;
+	position: relative;
+	box-shadow: 5px 5px 10px gray;
+}
+.course-prop img{
+	width: 100%;
+}
+@keyframes load-dots{
+	0%{opacity:.7;transform:scale(1.5)}
+	50%{opacity:1;transform:scale(1)}
+	100%{opacity:.7;transform:scale(1.5)}
+}
+@keyframes rotate{
+	from{transform: rotate(360deg);}
+	to{transform: rotate(0deg);}
+}
+.big-load{
+	position: relative;
+	height: 89vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+}
+.big-load span{
+	position: relative;
+	animation: rotate 1s linear infinite;
+}
+.big-load img{
+	height: 80vmin;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%);
+}
+.big-load h3{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%);
+	color: rgba(28,117,188,.3);
+	padding-top: 0;
+	padding-bottom: 0;
+	margin-top: 0;
+	font-size: 10vw;
+}
+.clear{
+	width: 100%;
+	position: relative;
+}
+.buy{
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	margin-top: 1em;
+	font-size: 2em;
+	background-color: rgb(28,117,188);
+	color:white;
+	text-decoration: none;
+	padding: .5em;
+	box-shadow: 3px 3px 5px gray;
+}
