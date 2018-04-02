@@ -62,9 +62,7 @@ class App extends Component{
 		Ajax.login(e,json=> {
 			if (json.success) {
 				this.historyPush("Dashboard")
-				if (json.premium) {
-					this.setState({premium:true})
-				}
+				this.setState({premium:json.premium})
 			}else{
 				alert("error, revisa tu usuario y contraseña.")
 				this.goBack()
