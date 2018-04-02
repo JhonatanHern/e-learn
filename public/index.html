@@ -42,6 +42,8 @@
         font-family:'Century Gothic';
       }
       #inm-load h2{
+        margin-left: 0;
+        text-align: center;
         -webkit-animation: loadAnimation 1s linear infinite;
                 animation: loadAnimation 1s linear infinite;
       }
@@ -57,13 +59,16 @@
       }
     </style>
   </head>
-  <body onload="document.getElementById('inm-load').style.display='none'">
+  <body onload="document.getElementById('inm-load').style.display='none';console.log('loaded')">
     <nav class="navigation-bar">
+      <i class="fa fa-bars"
+        onclick="this.parentElement.classList.toggle('top')">
+      </i>
       <div>
-        <a href="/">Inicio</a>
         <a href="https://serofca.com">SEROFCA</a>
         <a href="https://serofcainvestiga.com.ve">Investigación</a>
         <a href="https://serofcacademica.com.ve">Academia</a>
+        <a href="/">Cerrar Sesión</a>
       </div>
     </nav>
     <noscript>

@@ -1,45 +1,50 @@
-import React, { Component } from 'react'
-import Loading from './Loading'
-import Ajax from './Ajax'
+import React from 'react'
 
 class Course extends React.Component{
 	constructor(props){
+		'kek';
 		super(props)
-		this.state = {loaded:false}
-	}
-	componentWillReceiveProps(np,ns){
-		this.setState({loaded:false})
-		Ajax.getCourse(np.id,(r)=>{
-			r.loaded = true
-			this.setState(r)
-		})
 	}
 	render(){
 		if (this.props.mode !== "Course") {
 			return null
 		}
-		console.log('k')
-		if (!this.state.loaded) {
-			return <Loading />
+		let vids = []
+		if (this.props.data.video) {
+			vids = this.props.data.video.map((e,i)=>{
+				return (
+					<div data-video-title={e.name} data-video-id={e.id_video} key={i} onClick={this.props.data.userAccess && this.props.watchVideo}>
+						<img data-video-title={e.name} data-video-id={e.id_video}
+							src={
+								'https://elearn.serofca.com/Images/Videos/' +
+								this.props.id + '-' +
+								e.id_video + '.jpg'}
+							onLoad={function(e){
+								e.target.style.height=e.target.offsetWidth*.4+'px'
+								let elem = e.target
+								window.addEventListener('resize',()=>elem.style.height=elem.offsetWidth*.4+'px')
+							}}
+							onError={function(e){e.target.style.display="none"}}
+							alt=""
+							/>
+						<span data-video-title={e.name} data-video-id={e.id_video}>{e.name}</span>
+					</div>
+					)
+			})
 		}
-		let vids = this.state.videos.map((e,i)=>{
-			return (
-				<div key={i} onClick={this.props.watchVideo}>
-					<img src={e.url} onLoad={function(e){e.target.style.height=e.target.offsetWidth*.4+'px'}}/>
-					<span>{e.title}</span>
-				</div>
-				)
-		})
 		return (
 			<div className="flexer" attr={this.props.id}>
-				<img className="cover" src={this.state.photo}/>
+				<img alt="course" className="cover" src={'https://elearn.serofca.com/Images/'+this.props.id+'.jpg'}/>
 				<section className="course-info">
-					<h1>{this.state.name}</h1>
-					<span>
-						Precio: {this.state.price} USD 
-						<a className="light-link" onClick={this.props.buy}>comprar</a>
-					</span>
-					<p>{this.state.description}</p>
+					<h1>{this.props.data.name}</h1>
+					{
+						!this.props.data.userAccess && 
+						<span>
+							Precio: {this.props.data.price} USD 
+							<a className="light-link" onClick={this.props.buy}>comprar</a>
+						</span>
+					}
+					<p>{this.props.data.description}</p>
 				</section>
 				<section className="course-videos">{vids}</section>
 			</div>

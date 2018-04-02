@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 class Upgrade extends React.Component{
+	// eslint-disable-next-line
 	constructor(props){
 		super(props)
 	}

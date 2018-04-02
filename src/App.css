@@ -3,12 +3,32 @@
 	transition-duration: .3s;
 	animation: fadeIn .3s;
 }
+.w100{
+	width: 100%;
+	text-align: center;
+	margin-bottom: 1em;
+}
+.gray-text{
+	color: gray;
+}
+.tiny-text{
+	font-size: .8em;
+}
 @keyframes fadeIn{
 	from{opacity: 0}
 	to{opacity: 1}
 }
+@keyframes fadeInHeight{
+	from{height: 0}
+	to{height: auto}
+}
+iframe{
+	max-height: 90vh;
+	max-width: 100%;
+}
 body{
 	width: 100vw;
+	position: static;
 	overflow-x: hidden;
 	font-family:'Century Gothic';
 	margin:0;
@@ -16,12 +36,6 @@ body{
 .flexer{
 	display: flex;
 	flex-wrap: wrap;
-}
-.navigation-bar{
-	background-color:rgb(28,117,188);
-	position:relative;
-	color:white;
-	font-size:1.3em;
 }
 .cover{
 	width: 100%;
@@ -38,16 +52,37 @@ body{
 .course-videos{
 	width: 40%;
 	padding: 2em;
-	max-height: 60vh;
+	max-height: 100vh;
 	background-color: #ddf;
 	overflow-y: auto;
 }
 .course-videos img{
 	width: 100%;
+	object-fit: cover;
 }
 .course-videos div{
 	padding: 1em;
 	cursor: pointer;
+}
+@media(max-width: 800px){
+	.course-info{
+		width: 100%;
+	}
+	.course-videos{
+		width: 100%;
+		padding-left: 0;
+		padding-right: 0;
+	}
+	.flexer{
+		flex-direction: column;
+	}
+}
+.navigation-bar{
+	background-color:rgb(28,117,188);
+	position:relative;
+	color:white;
+	font-size:1.3em;	
+	height: 10vh;
 }
 .navigation-bar div{
 	position: relative;
@@ -64,6 +99,44 @@ body{
 }
 .navigation-bar div a:hover{
 	background-color: rgb(247,147,29);
+}
+.navigation-bar .fa-bars{
+	display: none;
+}
+@media(max-width: 800px){
+	.navigation-bar div{
+		transition-duration: .2s;
+		flex-direction: column;
+		position: fixed;
+		top: 10vh;
+		left: 0;
+		background-color:rgba(28,117,188,.9);
+		z-index: 999999;
+		width: 100vw;
+		margin-left: -100%;
+		text-align: center;
+		align-items: center;
+		justify-content: space-around;
+		height: 90vh;
+	}
+	.navigation-bar.top div{
+		margin-left: 0%;
+	}
+	.navigation-bar .fa-bars{
+		display:inline-block;
+		position: relative;
+		left: 1vh;
+		top: 1vh;
+		font-size: 8vh;
+		cursor: pointer;
+	}
+	.navigation-bar div a{
+		flex-grow: 1;
+		width: 100vw;
+		text-align: center;
+		text-decoration: none;
+		justify-content: space-around;
+	}
 }
 a{
 	color:inherit;
@@ -104,13 +177,23 @@ iframe{
 }
 #root{
 	height: 90vh;
-	position: relative;
+	position: fixed;
+	top: 10vh;
+	left: 0;
 	overflow-y: auto;
+	width: 100%;
+	overflow-x: hidden;
+
 }
 #root > section{
 	background-color:white;
 	color:#333;
 	height: 100%;
+	width: 100%;
+	position: relative;
+	left: 0;
+}
+#root > section > section{
 	width: 100%;
 }
 #login{
@@ -124,6 +207,7 @@ iframe{
 	font-size: 1.2em;
 }
 #login input{
+	padding: .25em;
 	font-size: 1.2em;
 	display: block;
 	width: 100%;
@@ -165,9 +249,9 @@ iframe{
 #back{
 	z-index: 99999;
 	cursor: pointer;
-	position: absolute;
+	position: fixed;
 	left: 0;
-	top: 0;
+	top: 10vh;
 	padding: .5em;
 	background-color: rgb(28,117,188);
 	color:#fff;
@@ -198,6 +282,16 @@ iframe{
 	padding: 1em;
 	position: relative;
 	box-shadow: 5px 5px 10px gray;
+}
+
+@media(max-width: 800px){
+	.course-prop{
+		width: 100%;
+	}
+	.course-prop img{
+		object-fit: cover;
+		max-height: 40vw;
+	}
 }
 .course-prop img{
 	width: 100%;
@@ -257,3 +351,136 @@ iframe{
 	padding: .5em;
 	box-shadow: 3px 3px 5px gray;
 }
+.category{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	position: relative;
+	margin-bottom: 1em;
+	width: 90%;
+	border: 3px solid rgba(28,117,188,.8);
+}
+.category h3{
+	background-color: rgba(28,117,188,.8);
+	padding: 1em;
+	width: 100%;
+	color: white;
+	text-align: center;
+	margin-top: 0;
+	display: flex;
+	margin-bottom: 0;
+}
+.
+.category h3 .fa{
+	width: 1em;
+}
+.category h3 span{
+	flex-grow: 1;
+}
+.category.drop div{
+	display: block;
+}
+.category div{
+	animation: fadeIn 1s ease-in-out;
+	display: none;
+	overflow-y: hidden;
+	width: 22%;
+	position: relative;
+	padding: 1em 0em;
+}
+.category div img{
+	width: 100%;
+	object-fit: contain;
+	border:5px solid rgb(247,147,29);
+}
+.category div a{
+	width: 100%;
+	display: block;
+	text-align: center;
+	background-color: rgba(28,117,188,.8);
+	color:white;
+	padding: 0em 1em;
+	font-size: 1.1em;
+}
+@media(max-width: 800px){
+	.category div{
+		width: 90%;
+	}
+	.category h3{
+		padding: .5em;
+	}
+}
+
+/* video code start */
+	#frame{
+		background-color: black;
+		width: 100%;
+		position: relative;
+		left: 0;
+	}
+	#frame #controls{
+		color: #eee;
+		display: flex;
+		position: absolute;
+		justify-content: space-between;
+		top: 100%;
+		width: 100%;
+		left: 0;
+		transform: translateY(-120%);
+		overflow-y: visible;
+	}
+	#frame #ptotal{
+		background-color: rgb(28,117,188);
+		border: 1px solid rgb(247,147,29);
+		height: 100%;
+	}
+	#frame #controls i{
+		width: 1em;
+		font-size: 2.5em;
+		min-height:1em;
+		background-color: rgba(255,255,255,.1); 
+	}
+	#frame i.fa{
+		margin: 5px;
+	}
+	#frame #play{
+		margin-left: 1em;
+	}
+	#frame #video{
+		max-width:100%;
+		height: 90vh;
+		position: relative;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+	#frame{
+		position: relative;
+	}
+	#frame #controls *{
+		opacity: 0;
+		z-index: 3;
+	}
+	#frame #controls:hover *{
+		opacity: 1;
+	}
+	#frame #controls:hover #shade{
+		display: block;
+	}
+	#frame #shade{
+		display: none;
+		z-index: 2;
+		position: absolute;
+		height: 410%;
+		width: 100%;
+		top: -300%;
+		left: 0;
+		background: linear-gradient(180deg,transparent,black);
+		animation: fade-in 1s;
+	}
+	#frame #progress{
+		position: absolute;
+		width: 100%;
+		height: .5em;
+		background-color: rgba(255,255,255,.5);
+		transform: translateY(-100%);
+	}
